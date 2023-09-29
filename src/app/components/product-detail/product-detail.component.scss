@@ -1,0 +1,30 @@
+.product-detail-container {
+    border: solid 1px #ddd;
+    border-radius: 9px;
+
+    .title {
+        background-color: #eee;
+        display: block;
+        padding: 0.5rem 1rem;
+        font-size: 18px;
+        font-weight: 100;
+        border-bottom: solid 1px #ddd;
+    }
+
+    .product-detail {
+        display: grid;
+        grid-template-columns: 100px 1fr auto;
+        align-items: baseline;
+        margin: 1rem;
+
+        > div {
+            display: grid;
+        }
+    }
+
+    .product-image {
+        img {
+            max-width: 400px;
+        }
+    }
+}

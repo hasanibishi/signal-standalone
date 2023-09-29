@@ -1,0 +1,11 @@
+<div class="product-container">
+    <span class="title">Products</span>
+
+    <div class="product-items">
+        <span *ngFor="let p of products | async"
+              [ngClass]="{'selected-product': p.id === selectedProduct}"
+              (click)="getProductDetail(p)">
+            {{p.title}}
+        </span>
+    </div>
+</div>
