@@ -1,0 +1,25 @@
+.cart-products {
+    max-width: 50%;
+    margin: 5rem auto;
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;
+
+        td,
+        th {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 0 10px;
+        }
+
+        th {
+            padding: 10px;
+        }
+    }
+
+    h1 {
+        text-align: right;
+    }
+}

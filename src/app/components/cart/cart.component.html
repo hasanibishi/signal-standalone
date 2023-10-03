@@ -1,0 +1,32 @@
+<div class="cart-products">
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Sum</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let p of dataService.productsOnCart()">
+                <td>{{p.title}}</td>
+                <td>{{p.category}}</td>
+                <td>{{p.price}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.quantity * p.price}}</td>
+                <td>
+                    <button mat-icon-button
+                            (click)="deleteFromCart(p.id)">
+                        <mat-icon style="color: red;">close</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h1>Total Sum: {{totalSum()}}</h1>
+</div>

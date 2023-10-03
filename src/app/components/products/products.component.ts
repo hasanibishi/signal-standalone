@@ -1,34 +1,30 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RestConnectorService } from 'src/app/services/rest-connector.service';
+import { DataService } from 'src/app/services/data.service';
 import { Product } from 'src/app/models/product.model';
-import { Observable } from 'rxjs';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'products',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ProductDetailComponent, FormsModule, MatIconModule],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
 
-  private restConnector = inject(RestConnectorService);
-
-  products!: Observable<Product[]>;
+  dataService = inject(DataService);
 
   selectedProduct: number = 0;
 
-  ngOnInit(): void {
-    this.getProducts();
-  }
-
-  getProducts() {
-    this.products = this.restConnector.getProducts();
-  }
-
   getProductDetail(product: Product) {
     this.selectedProduct = product.id;
-    this.restConnector.productDetail.set(product);
+
+    product.quantity = this.dataService.productsOnCart()
+      .find(p => p.id === product.id)?.quantity ?? 0;
+
+    this.dataService.productDetail.set(product);
   }
 }

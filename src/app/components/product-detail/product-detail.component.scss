@@ -13,18 +13,21 @@
 
     .product-detail {
         display: grid;
-        grid-template-columns: 100px 1fr auto;
+        grid-template-columns: 100px 1fr 160px;
         align-items: baseline;
         margin: 1rem;
 
         > div {
             display: grid;
         }
-    }
 
-    .product-image {
-        img {
-            max-width: 400px;
+        .quantity {
+            display: flex;
+        }
+
+        .quantityButtons {
+            display: flex;
+            gap: 1rem;
         }
     }
 }

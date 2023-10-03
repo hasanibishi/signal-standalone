@@ -1,7 +1,35 @@
-.container {
+header {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    max-width: 1200px;
-    margin: 5rem auto;
-    grid-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    background-color: #eee;
+
+    nav {
+        justify-self: end;
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        li:hover,
+        .router-link-active {
+            background-color: #ddd;
+            color: #6495ed;
+        }
+    }
+
+    .cart-badge {
+        align-self: end;
+    }
 }

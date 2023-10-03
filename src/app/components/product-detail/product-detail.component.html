@@ -1,6 +1,6 @@
 <div class="product-detail-container"
-     *ngIf="productDetail">
-    <span class="title">{{productDetail.title}}</span>
+     *ngIf="detailSignal()">
+    <span class="title">{{detailSignal()!.title}}</span>
 
     <div class="product-detail">
         <div>
@@ -14,22 +14,40 @@
         </div>
 
         <div>
-            <span>{{productDetail.brand}}</span>
+            <span>{{detailSignal()!.brand}}</span>
             <br>
-            <span>{{productDetail.category}}</span>
-            <span>{{productDetail.price}} $</span>
-            <span>{{productDetail.discountPercentage}} %</span>
-            <span>{{productDetail.rating}}</span>
-            <span>{{productDetail.description}}</span>
+            <span>{{detailSignal()!.category}}</span>
+            <span>{{detailSignal()!.price}} $</span>
+            <span>{{detailSignal()!.discountPercentage}} %</span>
+            <span>{{detailSignal()!.rating}}</span>
+            <span>{{detailSignal()!.description}}</span>
         </div>
 
         <div>
-            <button mat-raised-button
-                    color="primary">Add to Cart</button>
-        </div>
-    </div>
+            <div>
+                <button mat-raised-button
+                        color="primary"
+                        (click)="addToCart()">Add to Cart</button>
+            </div>
 
-    <div class="product-image">
-        <img [src]="productDetail.thumbnail">
+            <br>
+            <br>
+            <br>
+
+            <div *ngIf="detailSignal()!.quantity">
+                <div class="quantity">
+                    <span>Quantity:</span>
+                    <span> {{detailSignal()!.quantity}}</span>
+                </div>
+
+                <div class="quantityButtons">
+                    <button (click)="changeQuantity(true)"
+                            mat-raised-button>+</button>
+
+                    <button (click)="changeQuantity(false)"
+                            mat-raised-button>-</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
