@@ -34,7 +34,7 @@ export class DataService {
     const index = this.productsOnCart().map(x => x.id).indexOf(id);
 
     if (index != -1) {
-      this.productsOnCart().splice(index, 1);
+      this.productsOnCart.mutate(products => products.splice(index, 1))
     }
   }
 }
