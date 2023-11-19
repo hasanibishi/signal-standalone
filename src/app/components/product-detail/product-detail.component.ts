@@ -27,12 +27,16 @@ export class ProductDetailComponent implements OnDestroy {
 
   changeQuantity(increase: boolean) {
     this.cartProductsSignal.update(products => {
-      const foundProduct = products.find(x => x.id === this.detailSignal()!.id);
+      const product = products.find(x => x.id === this.detailSignal()!.id);
 
-      if (foundProduct) {
-        increase ? foundProduct.quantity += 1 : foundProduct.quantity -= 1;
+      if (product) {
+        increase ? product.quantity += 1 : product.quantity -= 1;
 
-        this.detailSignal.set(foundProduct);
+        if (product.quantity === 0) {
+          this.dataService.deleteItemFromCart(product.id);
+        }
+
+        this.detailSignal.set(product);
       }
 
       return products;

@@ -31,6 +31,10 @@ export class DataService {
   }
 
   deleteItemFromCart(id: number) {
-    this.productsOnCart.set(this.productsOnCart().filter(x => x.id !== id));
+    const index = this.productsOnCart().map(x => x.id).indexOf(id);
+
+    if (index != -1) {
+      this.productsOnCart().splice(index, 1);
+    }
   }
 }
